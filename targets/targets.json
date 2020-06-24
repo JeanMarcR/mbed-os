@@ -3944,12 +3944,68 @@
             "USBDEVICE",
             "MPU"
         ],
-        "mbed_rom_start": "0x08000000",
+      " mbed_rom_start": "0x08000000",
         "mbed_rom_size": "0x200000",
         "mbed_ram_start": "0x20000000",
         "mbed_ram_size": "0x40000",
         "bootloader_supported": true
     },
+    "B_L4S5I_IOT01A": {
+	    "components_add": [
+            "FLASHIAP"
+        ],
+        "inherits": [
+            "MCU_STM32"
+        ],
+        "supported_form_factors": [
+            "ARDUINO",
+            "PMOD"
+        ],
+        "core": "Cortex-M4F",
+        "extra_labels_add": [
+            "STM32L4",
+            "STM32L4S5xI"
+        ],
+        "config": {
+            "clock_source": {
+                "help": "Mask value : USE_PLL_HSE_EXTC (need HW patch) | USE_PLL_HSE_XTAL | USE_PLL_HSI | USE_PLL_MSI",
+                "value": "USE_PLL_MSI",
+                "macro_name": "CLOCK_SOURCE"
+            },
+            "lpticker_lptim": {
+                "help": "This target supports LPTIM. Set value 1 to use LPTIM for LPTICKER, or 0 to use RTC wakeup timer",
+                "value": 1
+            }
+        },
+        "macros_add": [
+            "HSE_VALUE=48000000",
+            "MBED_TICKLESS",
+            "STM32L4S5xx",
+            "MBEDTLS_CONFIG_HW_SUPPORT",			
+            "EXTRA_IDLE_STACK_REQUIRED"
+        ],
+        "overrides": {
+            "lpticker_delay_ticks": 0
+        },
+        "mbed_rom_start": "0x8000000",
+        "mbed_rom_size": "0x200000",
+        "mbed_ram_start": "0x20000000",
+        "mbed_ram_size": "0xA0000",
+        "detect_code": [
+            "0885"
+        ],
+        "device_has_add": [
+            "ANALOGOUT",
+            "CAN",
+            "CRC",
+            "SERIAL_ASYNCH",
+            "TRNG",
+            "FLASH",
+            "USBDEVICE",
+            "MPU"
+        ],
+        "bootloader_supported": true
+    },	
     "NUCLEO_L552ZE_Q": {
         "inherits": [
             "MCU_STM32"
