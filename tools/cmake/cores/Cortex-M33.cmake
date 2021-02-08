@@ -6,7 +6,7 @@ if(${MBED_TOOLCHAIN} STREQUAL "GCC_ARM")
     list(APPEND common_options
         "-mthumb"
         "-mcpu=cortex-m33+nodsp"
-        "-march=armv8-m.main"
+        "-mfpu=none"
     )
 elseif(${MBED_TOOLCHAIN} STREQUAL "ARM")
     list(APPEND common_options
@@ -20,7 +20,6 @@ function(mbed_set_cpu_core_definitions target)
         INTERFACE
             __CORTEX_M33
             ARM_MATH_ARMV8MML
-            DOMAIN_NS=1
             __CMSIS_RTOS
             __MBED_CMSIS_RTOS_CM
     )

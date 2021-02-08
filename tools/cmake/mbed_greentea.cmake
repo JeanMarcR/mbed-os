@@ -13,14 +13,14 @@ include(${MBED_PATH}/tools/cmake/app.cmake)
 # TEST_REQUIRED_LIBS - Test suite required libraries
 # 
 # calling the macro:
-# mbed_greentea_cmake_macro(
+# mbed_greentea_add_test(
 #    TEST_NAME mbed-platform-system-reset
 #    TEST_INCLUDE_DIRS mbed_store
 #    TEST_SOURCES foo.cpp bar.cpp
 #    TEST_REQUIRED_LIBS mbed-kvstore mbed-xyz
 # )
 
-macro(mbed_greentea_cmake_macro)
+macro(mbed_greentea_add_test)
     set(options)
     set(singleValueArgs TEST_NAME)
     set(multipleValueArgs
@@ -42,8 +42,6 @@ macro(mbed_greentea_cmake_macro)
     add_executable(${TEST_NAME})
 
     mbed_configure_app_target(${TEST_NAME})
-
-    mbed_set_mbed_target_linker_script(${TEST_NAME})
 
     target_include_directories(${TEST_NAME}
         PRIVATE
